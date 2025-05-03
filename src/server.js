@@ -2,9 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 const initRoutes = require("./routes/initRoutes.routes");
 const database = require("./config/connectDatabase");
+database.connect();
 
 app.use(express.urlencoded({
     extended: true
@@ -15,8 +16,10 @@ app.use(cors({
     methods: ["DELETE", "POST", "PUT", "GET"]
 }
 ))
-database.connect();
-initRoutes(app);
-app.listen(PORT, () => {
-    console.log("App listening on port 5000 ", PORT);
+// initRoutes(app);
+app.get('/home',(req,res)=>{
+    res.send("Hello");
+})
+const listening = app.listen(PORT, () => {
+    console.log("App listening on port " + listening.address().port);
 })
