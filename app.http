@@ -1,0 +1,21 @@
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email":"nkien9450@gmail.com",
+    "password":"1234567890"
+}
+
+###
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "username":"nguyentrungkien",
+    "email":"nkien9450@gmail.com",
+    "password":"1234567890"
+}
+
+###
+GET http://localhost:5000/users

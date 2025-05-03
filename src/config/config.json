@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "uo79vmsnzjbtjnhi",
+    "password": "wBCHwG1mEuj56p2tiMDT",
+    "database": "b88pj9yxfr1yq2j9voov",
+    "host": "b88pj9yxfr1yq2j9voov-mysql.services.clever-cloud.com",
+    "dialect": "mysql",
+    "logging":false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
