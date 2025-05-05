@@ -6,6 +6,7 @@ const PORT = 5000;
 const initRoutes = require("./routes/initRoutes.routes");
 const database = require("./config/connectDatabase");
 const initAuth = require("./routes/auth.routes");
+const service = require("./services/auth.service");
 database.connect();
 
 app.use(express.urlencoded({
@@ -19,6 +20,16 @@ app.use(cors({
 }))
 
 app.use('/',initAuth);
+app.get("/home",(req,res)=>{
+    return res.send("Hello");
+})
+const users = async(req,res) => {
+    const responsive = await service.usersService();
+    return res.status(200).json(responsive);
+}
+
+app.get('/users',users);
+
 
 const listening = app.listen(PORT, () => {
     console.log("App listening on port " + listening.address().port);
