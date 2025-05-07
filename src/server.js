@@ -3,10 +3,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const PORT = 5000;
-const initRoutes = require("./routes/initRoutes.routes");
 const database = require("./config/connectDatabase");
-const initAuth = require("./routes/auth.routes");
 const service = require("./services/auth.service");
+const initRoutes = require("./routes/initRoutes.routes");
 database.connect();
 
 app.use(express.urlencoded({
@@ -19,17 +18,22 @@ app.use(cors({
     methods: ["DELETE", "POST", "PUT", "GET"]
 }))
 
-app.use('/',initAuth);
-app.get("/home",(req,res)=>{
-    return res.send("Hello");
-})
-const users = async(req,res) => {
-    const responsive = await service.usersService();
-    return res.status(200).json(responsive);
-}
+// controllers
+// const users = async (req, res) => {
+//     try {
+//         const responsive = await service.usersService();
+//         return res.status(200).json(responsive);
+//     } catch (error) {
+//         res.status(500).json({
+//             code: -1,
+//             message: "Interal Server Error"
+//         })
+//     }
+// }
 
-app.get('/users',users);
-
+// routers
+// app.get('/users', users);
+initRoutes(app);
 
 const listening = app.listen(PORT, () => {
     console.log("App listening on port " + listening.address().port);
