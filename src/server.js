@@ -12,8 +12,12 @@ app.use(express.urlencoded({
 }))
 
 app.use(express.json())
+// app.use(cors({
+//     origin: process.env.CLIENT,
+//     methods: ["DELETE", "POST", "PUT", "GET"]
+// }))
 app.use(cors({
-    origin: process.env.CLIENT,
+    origin: "*",
     methods: ["DELETE", "POST", "PUT", "GET"]
 }))
 initRoutes(app);
