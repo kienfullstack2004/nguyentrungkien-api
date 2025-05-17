@@ -1,27 +1,27 @@
 const db = require("../models");
-const {v4} = require("uuid");
+const { v4 } = require("uuid");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 // Hash Pass  
-const securityHashPass = (pass) => bcrypt.hashSync(pass,bcrypt.genSaltSync(12));
+const securityHashPass = (pass) => bcrypt.hashSync(pass, bcrypt.genSaltSync(12));
 
-const registerService = ({username,password,email}) => new Promise(async(relsove,reject)=>{
+const registerService = ({ username, password, email }) => new Promise(async (relsove, reject) => {
     try {
         const responsive = await db.User.findOrCreate({
-            where:{email},
-            defaults:{
-                id:v4(),
+            where: { email },
+            defaults: {
+                id: v4(),
                 username,
-                password:securityHashPass(password),
+                password: securityHashPass(password),
                 email
             },
-            raw:true
+            raw: true
         })
-       relsove({
+        relsove({
             code: responsive[1] ? 0 : 1,
-            message:responsive[1] ? "Đăng ký tài khoản thành công": "Đăng ký thất bại!", 
+            message: responsive[1] ? "Đăng ký tài khoản thành công" : "Đăng ký thất bại!",
         })
 
     } catch (error) {
@@ -29,41 +29,42 @@ const registerService = ({username,password,email}) => new Promise(async(relsove
     }
 })
 
-const loginService = ({email,password}) => new Promise(async(relsove,reject)=>{
+const loginService = ({ email, password }) => new Promise(async (relsove, reject) => {
     try {
         const responsive = await db.User.findOne({
-            where:{email}
+            where: { email }
         })
         const jwtUser = {
-            email:responsive?.email,
-            username:responsive?.username,
-            avatar:responsive?.avatar,
-            role:responsive?.role,
+            id:responsive?.id,
+            email: responsive?.email,
+            username: responsive?.username,
+            avatar: responsive?.avatar,
+            role: responsive?.role,
         }
-        const isPassCorrect = responsive && bcrypt.compareSync(password,responsive?.password);
-        const token = isPassCorrect && jwt.sign(jwtUser,process.env.SECRET_JWT,{expiresIn:'2d'})
+        const isPassCorrect = responsive && bcrypt.compareSync(password, responsive?.password);
+        const token = isPassCorrect && jwt.sign(jwtUser, process.env.SECRET_JWT, { expiresIn: '2d' })
 
-       relsove({
+        relsove({
             code: token ? 0 : 1,
             message: token ? "Đăng nhập thành công" : responsive ? "Mật khẩu không chính xác!" : "Tài khoản không tồn tại",
-            access_token: token || null 
+            access_token: token || null
         })
     } catch (error) {
         return reject(error);
     }
 })
 
-const usersService = () =>  new Promise(async(relsove,reject)=>{
+const usersService = () => new Promise(async (relsove, reject) => {
     try {
         const responsive = await db.User.findAll({
-            attributes:{
-                exclude:"password"
+            attriLinkes: {
+                exclude: "password"
             }
         });
         relsove({
             code: responsive ? 0 : 1,
-            message : responsive ? "OK!" : "Lỗi hệ thống",
-            users:responsive 
+            message: responsive ? "OK!" : "Lỗi hệ thống",
+            users: responsive
         })
     } catch (error) {
         return reject(error);

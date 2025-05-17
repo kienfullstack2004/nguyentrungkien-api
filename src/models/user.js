@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasOne(models.PostList, { foreignKey: "id", as: "userdetail" })
+      User.hasOne(models.Comment,{foreignKey:"author",as:"userComment"})
     }
   }
   User.init({
@@ -20,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     avatar: DataTypes.STRING,
     role: DataTypes.STRING,
     faceUrl: DataTypes.STRING,
-    youUrl:DataTypes.STRING,
-    twiUrl:DataTypes.STRING
+    youUrl: DataTypes.STRING,
+    twiUrl: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',

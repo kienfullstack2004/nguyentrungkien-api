@@ -13,9 +13,97 @@ Content-Type: application/json
 
 {
     "username":"nguyentrungkien",
-    "email":"nkien9450@gmail.com",
+    "email":"nkien945@gmail.com",
     "password":"1234567890"
 }
 
 ###
 GET http://localhost:5000/users
+
+###
+POST http://localhost:5000/admin/banner
+Content-Type: application/json
+
+{
+    "image":"https://res.cloudinary.com/dp6cr7ea5/image/upload/v1745409070/person/zu3jarzz0q8lpw8rnhwf.jpg"
+}
+
+###
+GET http://localhost:5000/admin/banners
+
+###
+GET http://localhost:5000/current/user 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3NTUxZTJjLTA2OTUtNDQ0Yy1iYmU5LWYxNGM0NDE1YmUzZiIsImVtYWlsIjoibmtpZW45NDUwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibmd1eWVudHJ1bmdraWVuIiwiYXZhdGFyIjoiIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE3NDY5NDk5MjksImV4cCI6MTc0NzEyMjcyOX0.e0PE9q9sYo0W7GJzgZfAfdo5220NHZLLDsI-ucs7Mvc 
+
+###
+POST http://localhost:5000/public/new
+Content-Type: application/json
+
+{
+    "title":"",
+    "dess":"",
+    "desshort":"",
+    "image":"",
+}
+
+###
+GET http://localhost:5000/public/news
+
+###
+DELETE http://localhost:5000/public/news/cdaa1e72-73d3-4629-b4ed-dda0a0424f98
+
+###
+GET http://localhost:5000/public/news/ef07855e-d414-45fd-a647-55b6c30e99e9
+
+###
+POST http://localhost:5000/public/new
+Content-Type: application/json
+
+{
+    
+}
+
+###
+
+POST http://localhost:5000/public/comment
+
+###
+GET http://localhost:5000/public/newsUser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3NTUxZTJjLTA2OTUtNDQ0Yy1iYmU5LWYxNGM0NDE1YmUzZiIsImVtYWlsIjoibmtpZW45NDUwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibmd1eWVudHJ1bmdraWVuIiwiYXZhdGFyIjoiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZHA2Y3I3ZWE1L2ltYWdlL3VwbG9hZC92MTc0NzAyMDI0Ny9uZ3V5ZW50cnVuZ2tpZW4vYmRzc3l5bnd5bnZpeXlsMzdjc2oucG5nIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE3NDcxNTYwMTksImV4cCI6MTc0NzMyODgxOX0.XDNxoXiScTsUw-rlBM5UsSsni3JBJYY5g5OPbQlKqdk
+
+###
+GET http://localhost:5000/public/comments/0766a9ca-e05e-4da9-93bc-b20c3b326f58
+###
+POST http://localhost:5000/public/createYtbs
+Content-Type: application/json
+
+{
+    "code":"XpZxtMYKesk",
+    "type":"film",
+    "log":"entirment"
+}
+###
+GET http://localhost:5000/public/ytbs
+###
+POST http://localhost:5000/admin/createCourses
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3NTUxZTJjLTA2OTUtNDQ0Yy1iYmU5LWYxNGM0NDE1YmUzZiIsImVtYWlsIjoibmtpZW45NDUwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibmd1eWVudHJ1bmdraWVuIiwiYXZhdGFyIjoiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZHA2Y3I3ZWE1L2ltYWdlL3VwbG9hZC92MTc0NzAyMDI0Ny9uZ3V5ZW50cnVuZ2tpZW4vYmRzc3l5bnd5bnZpeXlsMzdjc2oucG5nIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzQ3NDQ5NDA0LCJleHAiOjE3NDc2MjIyMDR9.-MtEO5Vu5pxTH7D-4uLabOGEt_qph3wZ5JHSDopL4fY
+
+{
+    "title":"Javascript & CSS",
+    "dess":"Mo ta cua khoa hoc Javascript & CSS",
+    "desshort":"Mo ta chi tiet cua khoa hoc Javascript & CSS",
+    "price":"1200000",
+    "price_sale":"0.3",
+    "image":"https://softsynthsoftware.com/assets/images/javatraining.webp",
+    "time":"12h"
+}
+
+###
+GET http://localhost:5000/admin/courses
+
+###
+DELETE http://localhost:5000/admin/courses/6f8accd8-ade7-42d1-943f-4375484a37d3
+
+###
+GET http://localhost:5000/admin/courses/e9ebdd81-5b04-4bb6-a9ce-bb2ac6867007
